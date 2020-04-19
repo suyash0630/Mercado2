@@ -1,0 +1,74 @@
+
+    
+      <div class="reg-card">
+          <mat-grid-list cols="2"  class="grid">
+              <mat-grid-tile> 
+                  <img src="../../assets/img/ecom.jpg">
+              </mat-grid-tile>
+              <mat-grid-tile class="reg-tile">   
+                  <div>
+                      <mat-card-header>
+                          <h1 style="color: rgb(10, 101, 238);font-family:'Times New Roman', Times, serif;margin-top: 0.3em;">User Registration</h1>
+                      </mat-card-header>
+                      <form [formGroup]="registrationForm" (ngSubmit)="register()">
+                          <mat-form-field class="input" colour="basic">
+                              <mat-label>
+                              Name
+                              </mat-label>
+                              <input matInput placeholder="Name" formControlName="uName">
+                              <mat-error >
+                               Name is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                          <br>
+                          <mat-form-field class="input">
+                              <mat-label>
+                                  Email
+                              </mat-label>
+                              <input matInput placeholder="Email" formControlName="uEmail">
+                              <mat-error >
+                                  Email is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+  
+                          <br>
+                          <mat-form-field class="input">
+                              <mat-label>Enter your password</mat-label>
+                              <input matInput [type]="hide ? 'password' : 'text'" formControlName="uPass">
+                              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                              </button>
+                          </mat-form-field>
+                          <br>
+                          <mat-form-field class="input">
+                              <mat-label>
+                              Phone Number
+                              </mat-label>
+                              <input matInput placeholder="Phone Number" formControlName="uPhone">
+                              <mat-error >
+                              phoneNumber is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                          <br>
+                          <mat-form-field class="input" >
+                              <mat-label>
+                                  Date of Birth
+                              </mat-label>
+                              <input matInput placeholder="Email" type="date" formControlName="uDOB" >
+                              <mat-error >
+                                  Date is <strong>required</strong>
+                              </mat-error>
+                          </mat-form-field>
+                          <br>
+                          <button mat-raised-button color="primary" class="reg-button" type="submit" [disabled]='registrationForm.invalid' >Registration</button>
+                      </form> 
+                      <span style="color: green;" *ngIf="successMsg">{{successMsg}}</span> 
+                      <span style="color: rgb(214, 9, 94);" *ngIf="errorMsg">{{errorMsg}}</span> 
+                      
+                  </div> 
+              </mat-grid-tile>
+          </mat-grid-list> 
+      </div>
+   
+  
+  

@@ -1,0 +1,46 @@
+<style>
+  .hover{
+    cursor: pointer;
+  }
+</style>
+<mat-toolbar color="accent">
+  <span *ngIf="!flag">
+    <i (click)= "call()" class="material-icons" id="home" title="Home">home</i><i>Mercado</i>
+  
+  </span>
+  <span> &nbsp;&nbsp;&nbsp; <mat-form-field>
+      <input id="searchbar" class="searchIcon" type="text" matInput [(ngModel)]="searchKey" (change)="searchProducts(searchKey)">
+        <mat-icon id="searchbtn" [routerLink]="['/search',searchKey]" class="hover" title="Search">search</mat-icon>
+    </mat-form-field>
+ 
+  </span>
+
+  <span class="example-fill-remaining-space"></span>
+  <span *ngIf="userId"> Welcome {{ userId }}</span>
+  &nbsp;&nbsp;
+  <span><button mat-button color="accent"  style="color: black;"  *ngIf="userId" id="sellerlogin" (click)="sellerfun()">Seller Login</button></span>
+
+  <span>
+    <mat-icon id="cart" *ngIf="userId" [routerLink]="['/cart']" (click)="hideContent()"  title="Shopping Cart">shopping_cart</mat-icon>
+  </span>
+  &nbsp; &nbsp;
+  <span>
+    <mat-icon  *ngIf="userId" [routerLink]="['/order-history']" (click)="hideContent()" title="Orders">folder_special</mat-icon>
+  </span>
+  &nbsp;
+  <span>
+    <mat-icon id="login" *ngIf="!userId" [routerLink]="['/login']" (click)="hideContent()"  title="Login">person</mat-icon>
+  </span>
+  <span>
+    &nbsp;&nbsp;
+    <mat-icon id="reg" *ngIf="!userId" [routerLink]="['/register']" routerLinkActive="router-link-active" (click)="showContent()"  title="Register">
+      person_add</mat-icon>
+  </span>
+  
+  <span>
+    &nbsp;&nbsp;
+    <mat-icon id="logout" *ngIf="userId" (click)="logout()" title="Logout">exit_to_app</mat-icon>
+  </span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

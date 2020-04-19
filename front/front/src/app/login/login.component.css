@@ -1,0 +1,99 @@
+.mat-form-field {
+  width: 250px !important;
+}
+
+.mat-card-title{
+  position: relative;
+  top:5px;
+}
+.mat-card-subtitle{
+  position: relative;
+  left:200px;
+  top:10px;
+}
+
+#signin{
+  background-color: white;
+  border-radius: 25px;
+  width: 10rem;
+  color: black;
+}
+
+
+mat-card-header{
+  border-radius:3px;
+}
+
+mat-card-content mat-form-field{
+  margin-top:15px; 
+}
+
+button[type = "submit"]{
+  margin-top:15px; 
+}
+
+form{
+  font-size: 100%;
+
+}
+.example-full-width {
+  width: 100%;
+}
+.change{
+  background-color:red;
+  height: 28px;
+  width: 28px; 
+  color:white;
+  border-radius:100%;
+  margin: auto;
+}
+a{
+  cursor:pointer;
+}
+.login-card{
+  margin: auto;
+  width: 20rem;
+  text-align: center;
+  height: auto;
+  background: linear-gradient(180deg, #787AF9,#A739EA);
+  
+  color: white;
+  
+  border-radius: 25px;
+}
+.log-button{
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  width: 8em;
+}
+mat-label{
+  color: white;
+}
+input{
+  border-bottom: white;
+  
+}
+.image{
+  height: 4em;
+  width: 4em;
+  background-color: white;
+  margin: auto;
+  border-radius:40px ;
+}
+img
+{
+  width: 100%;
+  height: 100%;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.login{
+  background: url('../../assets/img/bglogin2.jpg');
+  height: 100%;
+  width: 100%;
+  padding-top: 5em;
+}

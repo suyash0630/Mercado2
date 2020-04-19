@@ -1,0 +1,10 @@
+mat-card{
+    background: linear-gradient(180deg, #787AF9,#A739EA);
+    color: #f4e04d;
+    border-radius: 25px;
+}
+button{
+    width: 80%;
+    background-color: white;
+    color: black;
+}

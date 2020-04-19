@@ -1,0 +1,50 @@
+<div ><mat-tab-group color="primary" (selectedTabChange)="viewProductByCategory($event)" mat-stretch-tabs mat-align-tabs="center">
+  <mat-tab label="Electronics"></mat-tab>
+  <mat-tab label="Clothing" id="clothes"></mat-tab>
+  <mat-tab label="Shoes" name="shoes" ></mat-tab>
+  <mat-tab label="Furniture" ></mat-tab>
+</mat-tab-group>
+
+
+  <div class="main" >
+    
+    <ul class="cards">
+      <li class="cards_item" *ngFor="let item of ViewCatalogs">
+        <div class="card">
+          <div class="card_image"><img class='img' (click)="routepage(item)" src={{item.image}}></div>
+          <div class="card_content">
+            <h2 class="card_title">{{item.pName}}</h2>
+            <p class="card_text">{{item.pDescription}}</p>
+            <p color="accent">Rs.{{item.price}}</p>
+            <button class="btn card_btn" (click)="routepage(item)">View Details</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    </div>
+    
+      
+  
+
+<mat-carousel timings="250ms ease-in" [autoplay]="true" interval="5000" color="primary" maxWidth="auto" maxHeight="auto"
+  proportion="39" slides="4" [loop]="true" [hideArrows]="false" [hideIndicators]="false" [useKeyboard]="true"
+  [useMouseWheel]="false" orientation="ltr" *ngIf="slideShow">
+  <mat-carousel-slide>
+    <div style="text-align: center"><img src="../assets/img/clothing.png" alt="Clothing"
+        (click)="viewProductBy('Clothing')"></div>
+  </mat-carousel-slide>
+  <mat-carousel-slide>
+    <div style="text-align: center"><img src="../assets/img/furnitures.png" alt="furnitures"
+        (click)="viewProductBy('Furniture')"></div>
+  </mat-carousel-slide>
+  <mat-carousel-slide>
+    <div style="text-align: center"> <img src="../assets/img/shoes.png" alt="shoes"
+        (click)="viewProductBy('Shoes')"></div>
+  </mat-carousel-slide>
+  <mat-carousel-slide>
+    <div style="text-align: center"> <img src="../assets/img/mobiles.png" alt="mobiles"
+        (click)="viewProductBy('Electronics')"></div>
+  </mat-carousel-slide>
+</mat-carousel>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,135 @@
+<div *ngIf="show">
+  <br><br><br>
+<div  class="col-md-4 offset-md-4">
+    <mat-card  class="text-center">
+      
+          <h4 style="float: center;color:  #f7db09;">Seller Login</h4>
+     
+      <mat-card-content>
+        <form (ngSubmit)="sellerlogin()">
+          <!-- <div> -->
+            <mat-form-field>
+              <input matInput id="sLogin" placeholder="sampleinput@seller" [formControl]="email">
+              <mat-hint>Hint: abc@infy</mat-hint>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage("email")}}</mat-error>
+            </mat-form-field>
+          <!-- </div> -->
+          <div>
+            <mat-form-field>
+              <input  matInput id="sPassword" type="password" placeholder="Sampleinput@123" [formControl]="password">
+              <mat-hint>Hint: Abc123</mat-hint>
+              <mat-error *ngIf="password.invalid">{{getErrorMessage("password")}}</mat-error>
+            </mat-form-field>
+          </div><br>
+     <div>
+        <button mat-flat-button class="example-full-width" [disabled]="email.invalid || password.invalid" id="sellerslogin" type="submit" color="primary">Login</button>
+     </div>
+    <p class="text-success">{{successMsg}}</p>
+     <p class="text-danger">{{errorMsg}}</p>
+     <div class="text-center text-primary">
+      <div>
+        <button  mat-button type="button"  id="sellerregister" (click)="fun()">New Register</button>
+      </div>
+     </div>  
+        </form>
+      </mat-card-content> 
+    </mat-card>
+  </div>
+</div>
+
+<div style="margin-top:50px "  *ngIf="!show">
+<div class="row">
+    <div  class="col-md-4 offset-md-4 ">
+      <div class="card bg-basic text-dark ">
+        <div class="card-body">
+          <div class="card-title">
+            <h3>Create an account</h3>
+          </div>
+          <form [formGroup]="registerForm" (ngSubmit)="seller()" align="align-items-center">
+              <div class="form-group">
+                  <label for="sEmail">Email Id</label>
+                  <input type="email" class="form-control" placeholder="johnsmith@seller" formControlName="sEmail" id="sEmail">
+                  <div id="sEmailError">
+                    <span class="text-danger"
+                      *ngIf="registerForm.controls.sEmail.touched && registerForm.controls.sEmail.errors?.required">Field
+                      required</span>
+                    <span class="text-danger" *ngIf="registerForm.controls.sEmail.errors && registerForm.controls.sEmail.dirty">{{ registerForm.controls.sEmail.errors.sEmailError.message | json }}</span>
+                    <span class="text-danger" *ngIf="registerForm.controls.sEmail.errors && registerForm.controls.sEmail.dirty">{{ registerForm.controls.emailId.errors.emailidError.message | json }}</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="sPass">Password</label>
+                    <input type="password" class="form-control" placeholder="Johnsmith@1234" formControlName="sPass" id="sPass">
+                    <div id="sPassError">
+                      <span class="text-danger"
+                        *ngIf="registerForm.controls.sPass.touched && registerForm.controls.sPass.errors?.required">Field
+                        required</span>
+                      <span class="text-danger" *ngIf="registerForm.controls.sPass.errors && registerForm.controls.sPass.dirty">Password must include
+                        atleast one capital letter, 1 digit and 1 special character (@$!%*?&)</span>
+                    </div>
+                  </div>
+              <div class="form-group">
+                  <label for="sName">Name</label>
+                  <input type="text" formControlName="sName" placeholder="John Smith" class="form-control" id="sName">
+                  <div id="sNameError">
+                    <span class="text-danger"
+                      *ngIf="registerForm.controls.sName.touched && registerForm.controls.sName.errors?.required">Field
+                      required</span>
+                    <span class="text-danger" *ngIf="registerForm.controls.sName.errors?.pattern  && registerForm.controls.sName.dirty">Username
+                      can have only alphabets and spaces</span>
+                  </div></div>
+                  <div class="form-group">
+                      <label for="sTANNumber">TAN Number</label>
+                      <input type="text" formControlName="sTANNumber" placeholder="ABCD12345T" class="form-control" id="sTANNumber">
+                      <div id="sTANNumberError">
+                        <span class="text-danger"
+                          *ngIf="registerForm.controls.sTANNumber.touched && registerForm.controls.sTANNumber.errors?.required">Field
+                          required</span>
+                        <span class="text-danger" *ngIf="registerForm.controls.sTANNumber.errors?.pattern  && registerForm.controls.sTANNumber.dirty">
+                          Please enter valid TAN Number</span>
+                      </div></div>
+                      <div class="form-group">
+                          <label for="sGSTNumber">GST Number</label>
+                          <input type="text" formControlName="sGSTNumber" placeholder="12ABCDE1234A1B2" class="form-control" id="username">
+                          <div id="sGSTNumberError">
+                            <span class="text-danger"
+                              *ngIf="registerForm.controls.sGSTNumber.touched && registerForm.controls.sGSTNumber.errors?.required">Field
+                              required</span>
+                            <span class="text-danger" *ngIf="registerForm.controls.sGSTNumber.errors?.pattern  && registerForm.controls.sGSTNumber.dirty">
+                                Please enter valid GST Number </span>
+                          </div></div>
+                          <div class="form-group">
+                              <label for="sAccountNumber">Account Number</label>
+                              <input type="number" class="form-control" placeholder="12345678910" formControlName="sAccountNumber" id="sAccountNumber">
+                              <div id="sAccountNumberError">
+                                <span class="text-danger"
+                                  *ngIf="registerForm.controls.sAccountNumber.touched && registerForm.controls.sAccountNumber.errors?.required">Field
+                                  required</span>
+                                <span class="text-danger" *ngIf="registerForm.controls.sAccountNumber.errors?.pattern && registerForm.controls.sAccountNumber.dirty"> 
+                                  Enter a valid Account number</span>
+                              </div>
+                            </div>         
+              <div class="form-group">
+                <label for="sPhone">Mobile Number</label>
+                <input type="number" class="form-control" placeholder="8456321025" formControlName="sPhone" id="sPhone">
+                <div id="sPhoneError">
+                  <span class="text-danger"
+                    *ngIf="registerForm.controls.sPhone.touched && registerForm.controls.sPhone.errors?.required">Field
+                    required</span>
+                  <span class="text-danger" *ngIf="registerForm.controls.sPhone.errors?.pattern && registerForm.controls.sPhone.dirty">Enter
+                    a valid mobile number</span>
+                </div>
+              </div>
+              <div>
+                <label>
+                  <button type="submit" id="sellersignup" class="btn btn-primary" [disabled]="registerForm.invalid">REGISTER</button>
+                </label>
+              </div>
+  
+          </form>
+          <span *ngIf="successMsg" class="text-success">{{ successMsg }}</span>
+          <span *ngIf="errorMsg" class="text-danger">{{ errorMsg }}</span>
+        </div>
+      </div>
+    </div>
+  </div>

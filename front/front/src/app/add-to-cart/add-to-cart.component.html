@@ -1,0 +1,121 @@
+<mat-spinner *ngIf="!flag2" style="margin:15% auto;" 
+mode="indeterminate"></mat-spinner>
+
+<div *ngIf="flag2">
+
+<div class="container" class="row" style="margin-top: 40px" >
+<div  *ngIf="!flag" class="col-md-7 offset-md-1">
+    <h3 style="font-family:comic sans" class="text-primary">
+        These are the {{items.length}} products in your cart!!!
+    </h3>
+  <div   *ngFor="let i of items">
+    <div class="card bg-basic text-dark">
+      <div class="card-body">
+        <div class="text-center text-info">
+          <h2>{{ i.pName }}</h2>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>
+                Quantity in Cart
+              </th>
+              <th>
+                Discounted Price
+              </th>
+              <th>
+                Products left in stock
+              </th>
+              <th>
+                Remove from Cart
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr > add here for items in case of error -->
+            <tr>
+              <td>
+                 <!-- {{ i.pQuantity }}  -->
+                 <input type="number" placeholder="1" (keyup)="checking(i)" [(ngModel)]="i.pQuantity">
+              </td>
+              <td>
+                {{ i.price | currency : 'INR' : 'symbol' : '.2' }}
+              </td>
+              <td>
+                 {{i.maxQ}}
+              </td>
+              <td>
+                <button type="submit"  (click)="deletetest(i)">
+                  <i class="material-icons">delete</i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3" *ngIf="!flag">
+    <div class="card bg-basic text-dark">
+      <div class="card-body">
+        <div class="text-center text-info">
+          <h2>Price Details:</h2>
+        </div>
+        <table class="table">
+          <tr>
+            <thead>
+              <tr>
+                <th>
+                  Cart Total (MRP):
+                </th>
+              </tr>
+            </thead>
+            <td>
+              {{ amount | currency : 'INR' : 'symbol' : '.2' }}
+            </td>
+          </tr>
+          <tr>
+            <thead>
+              <tr>
+                <th>
+                  Total Tax (17% by default):
+                </th>
+              </tr>
+            </thead>
+            <td>
+              {{ tax | currency : 'INR' : 'symbol' : '.2' }}
+            </td>
+          </tr>
+          <tr>
+            <thead>
+              <tr>
+                <th>
+                  Total payable:
+                </th>
+              </tr>
+            </thead>
+            <td>
+              {{ totalamount | currency : 'INR' : 'symbol' : '.2' }}
+            </td>
+          </tr>
+
+
+
+        </table>
+        <button type="submit" [disabled]="matching" class="btn-lg btn-block btn-primary" (click)="checkout()" id="checkout">Checkout</button>
+        <p *ngIf="matching" class="text-danger">Enter a valid Quantity</p>
+      </div>
+    </div>
+
+</div>
+</div>
+
+<div *ngIf="flag && !items"  class="text-center text-primary" style="margin-top: 15%">
+  <h1>Cart is empty!</h1>
+  <h4>Looks like you have no items in your shopping cart!</h4>
+</div>
+<div class="text-success" *ngIf="successMessage!=null">{{ successMsg }}</div>
+<div class="text-success" *ngIf="errorMessage!=null">{{ errormessage }}</div>
+</div>
