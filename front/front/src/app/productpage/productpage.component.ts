@@ -33,6 +33,7 @@ item:any[];
         response => {
           console.log("success");
           this.sample = response.message;
+          alert("Added to cart")
           console.log(response)
         }, err => {
           console.log("failure");
@@ -56,6 +57,7 @@ item:any[];
           console.log(err);
           this.errorMessage = err.error.message
         });
+        
 
   }
   goback(){

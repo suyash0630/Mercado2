@@ -5,7 +5,7 @@ mode="indeterminate"></mat-spinner>
 
 <div class="container" class="row" style="margin-top: 40px" >
 <div  *ngIf="!flag" class="col-md-7 offset-md-1">
-    <h3 style="font-family:comic sans" class="text-primary">
+    <h3 style="font-family:comic sans;color: rgb(247, 211, 10);"  class="text">
         These are the {{items.length}} products in your cart!!!
     </h3>
   <div   *ngFor="let i of items">
@@ -32,11 +32,9 @@ mode="indeterminate"></mat-spinner>
             </tr>
           </thead>
           <tbody>
-            <!-- <tr > add here for items in case of error -->
             <tr>
               <td>
-                 <!-- {{ i.pQuantity }}  -->
-                 <input type="number" placeholder="1" (keyup)="checking(i)" [(ngModel)]="i.pQuantity">
+                 <input type="number" placeholder="1" (click)="checking(i)" [(ngModel)]="i.pQuantity">
               </td>
               <td>
                 {{ i.price | currency : 'INR' : 'symbol' : '.2' }}
@@ -56,7 +54,6 @@ mode="indeterminate"></mat-spinner>
     </div>
   </div>
 </div>
-
 <div class="col-md-3" *ngIf="!flag">
     <div class="card bg-basic text-dark">
       <div class="card-body">
@@ -100,18 +97,13 @@ mode="indeterminate"></mat-spinner>
               {{ totalamount | currency : 'INR' : 'symbol' : '.2' }}
             </td>
           </tr>
-
-
-
         </table>
         <button type="submit" [disabled]="matching" class="btn-lg btn-block btn-primary" (click)="checkout()" id="checkout">Checkout</button>
         <p *ngIf="matching" class="text-danger">Enter a valid Quantity</p>
       </div>
     </div>
-
 </div>
 </div>
-
 <div *ngIf="flag && !items"  class="text-center text-primary" style="margin-top: 15%">
   <h1>Cart is empty!</h1>
   <h4>Looks like you have no items in your shopping cart!</h4>

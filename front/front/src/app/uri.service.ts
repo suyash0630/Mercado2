@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ViewCatalog } from './shared/viewcatalog';
 import { Router } from '@angular/router';
+import { AppComponent } from './app.component';
 @Injectable()
 export class UriService {
     public storage: any;
@@ -75,6 +76,7 @@ export class UriService {
             ":" + this.hooplaWebServiceUri.port + 
             "/" + this.hooplaWebServiceUri.applicationName;
     }
+
 
  
 

@@ -87,6 +87,19 @@
     color: #474747;
     width: 40px;
   }
+  .product-price-btn .price {
+    display: inline-block;
+    position: absolute;
+    top: -0px;
+    left: -10px;
+    height: 50px;
+    font-family: 'Trocchi', serif;
+    margin: 0 0 0 38px;
+    font-size: 28px;
+    font-weight: lighter;
+    color: #474747;
+    width: 40px;
+  }
 mat-icon{
     display: inline-block;
     position: relative;

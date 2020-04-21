@@ -136,7 +136,19 @@ user.retriveCart = (userId) => {
         })
     })
 }
+user.chkuser = (user1) => {
+    console.log()
+    return collection.getCollection().then(data => {
+        console.log(user1)
+        return data.find({"uCredentials.uEmail":user1}).then((res) => {
+         //   console.log(res);
+         //   console.log(`Successfully inserted user with _id: ${res.userId}`)
+            return res;
+        }).catch(err => console.error(`Failed to insert item: ${err}`))
+    })
+}
 user.appendUser = (user) => {
+    
     return collection.getCollection().then(data => {
         return data.create(user).then((res) => {
          //   console.log(res);

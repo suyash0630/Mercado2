@@ -34,8 +34,13 @@ export class RegisterComponent implements OnInit {
     this.rs.registerUser(this.registrationForm.value)
     .subscribe( 
       (good) => {
+        if(good.message=="the email Id is registered: Already exists")
+        {
+          this.successMsg="Account with this email already exist"
+        }
+        else
         this.successMsg=good.message;
-        this.route.navigate(['/login']);
+       
       }, 
       (bad) => {
         this.errorMsg=bad.error.message;

@@ -14,15 +14,7 @@ user.searchProduct=(prodname)=>{
         return response;
     })
 }
-user.sellerLogin=(sEmail,sPass)=>{
-    return dbLayer.sellerLogin(sEmail,sPass).then( response => {
-        return response
-    })
-}
-user.addProduct=(product)=>{
-    return dbLayer.addProduct(product).then(response=>{
-        return response})
-}
+
 user.getProducts=(s_Id)=>{
     return dbLayer.getProducts(s_Id).then(response =>{
         return response
@@ -45,10 +37,21 @@ user.retriveCart=(userId)=>{
         return response;
     })
 }
-user.appendUser=(user)=>{
-    return dbLayer.appendUser(user).then(response=>{
-        return response;
+user.appendUser=(user1)=>{
+    return dbLayer.chkuser(user1.userId).then(data =>{
+        console.log(user1.userId)
+        if(data.length==0){
+            console.log(data)
+        return dbLayer.appendUser(user1).then(response=>{
+            return response;
+        })
+    }
+    else{
+        return "Already exists"
+    }
+
     })
+   
 }
 user.appendSeller=(seller)=>{
     return dbLayer.appendSeller(seller).then(response=>{

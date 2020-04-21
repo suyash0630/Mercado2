@@ -83,11 +83,7 @@ export class DashboardComponent implements OnInit {
 
 
   routepage(value) {
-    console.log(value);
-    console.log(typeof value);
     this.UriService.storage = value;
-    console.log( this.UriService.storage);
-    console.log("aaa");
     this.router.navigate(['/productdetails'])
   }
 }

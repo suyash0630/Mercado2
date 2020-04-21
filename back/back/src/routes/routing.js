@@ -4,7 +4,7 @@ const service = require('../service/user');
 const Cart=require("../model/cart")
 const User=require("../model/login")
 const ViewOrder=require("../model/vieworder");
-const Seller=require("../model/seller");
+
 const Product=require("../model/prod")
 //To verify the credentials of user
 routing.post('/login', (req,res,next)=>{
@@ -27,19 +27,7 @@ routing.post('/sellerlogin', (req,res,next)=>{
         next(err);
     });
 });
-routing.post("/addproducts",(req,res,next)=>{
-    let product=new Product(req.body);
-    return service.addProduct(product).then(()=>{
-        res.json({"message" : "Product added to the database"} );  
-    }).catch(err => {
-        next(err);});
-})
-routing.get("/productSeller/:seller",(req,res,next)=>{
-    let s_Id=req.params.seller;
-    return service.getProducts(s_Id).then(product=>{
-        res.json(product);
-    })
-})
+
 //to retrive the products based on category from database
 routing.get("/products/:category",(req,res,next)=>{
     let pcategory=req.params.category;
@@ -69,25 +57,24 @@ routing.get("/cart/:userId",(req,res,next)=>{
         // console.log(product);
         res.json(product);
     }).catch(err=>{
-      //  console.log(err +" in router for get cart");
-     // console.log("ayush");
+       console.log(err +" in router for get cart");
+    
         next(err);})
 })
 routing.post("/user",(req,res,next)=>{
     let user=new User(req.body);
     return service.appendUser(user).then(data=>{
+        
+        if(data)
         res.json({"message":"the email Id is registered: "+data});
+        else{
+            res.json({"message":"Already registerd with this email"});
+        }
         
     }).catch(err => {
         next(err);});
 })
-routing.post("/seller",(req,res,next)=>{
-    let seller=new Seller(req.body);
-    return service.appendSeller(seller).then(data=>{
-        res.json({"message":"the email Id is registered: "+data});
-    }).catch(err => {
-        next(err);});
-})
+
 routing.get("/orderhistory/:userId",(req,res,next)=>{
     let userId = req.params.userId;
     return service.vieworder(userId).then(pastorders=>{

@@ -17,15 +17,16 @@ export class AddToCartComponent implements OnInit {
   successMessage = '';
   errorMessage = '';
   flag = true;
+  cartlen;
   ii;
   flag2 = false;
-  matching:boolean = false;
-  obj = { "productId": "", "s_Id": "", "maxQ": "" };
+  matching : boolean = false;
+  obj = { 'productId': '', 's_Id': '','maxQ': ''};
   myobjseller: any[] = [];
   constructor(private uriservices: UriService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    console.log("on add to cart");
+    console.log('on add to cart');
     this.matching = false;
     this.flag2 = false;
     this.viewitems();
@@ -34,18 +35,17 @@ export class AddToCartComponent implements OnInit {
   viewitems() {
 
     this.userId = sessionStorage.getItem('uEmail');
-    console.log(this.userId)
+    console.log(this.userId);
     this.uriservices.viewcart(this.userId)
       .subscribe(
         (good) => {
-         
           this.items = good;
-          console.log("Aaa")
-          console.log("itemssss", this.items);
+          console.log('Aaa')
+          console.log('itemssss', this.items);
           this.flag = true;
           this.flag2 = true;
           if (this.items == null)
-            this.flag = true;
+            {this.flag = true;}
           else {
             this.calculateamount();
             this.getmaxquantity();
@@ -58,13 +58,13 @@ export class AddToCartComponent implements OnInit {
         })
   }
   getmaxquantity() {
-    console.log("A - This items: ", this.items);
+    console.log('A - This items: ', this.items);
     this.myobjseller = [];
-    let myobj = ["", ""];
-    console.log("B: ", this.myobjseller, myobj);
+    let myobj = ['', ''];
+    console.log('B: ', this.myobjseller, myobj);
     for (let i = 0; i < this.items.length; i++) {
-      let obj = { "productId": "", "s_Id": "", "maxQ": "" };
-      console.log("C: ", this.myobjseller);
+      let obj = { 'productId': '', 's_Id': '', 'maxQ': '' };
+      console.log('C: ', this.myobjseller);
       obj.productId = this.items[i].productId;
       obj.s_Id = this.items[i].s_Id;
       console.log(obj);
@@ -81,11 +81,12 @@ export class AddToCartComponent implements OnInit {
         console.log(good);
        for(let i=0;i<this.myobjseller.length;i++)
        {
-            this.myobjseller[i].maxQ = good[i];
-            this.items[i].maxQ = good[i];
+        this.myobjseller[i].maxQ = good[i];
+        this.items[i].maxQ = good[i];
        }
        this.flag=false;
        console.log(this.myobjseller);
+
       },
       (bad) => {
        
@@ -151,6 +152,7 @@ export class AddToCartComponent implements OnInit {
     // console.log(this.myobjseller);
     console.log(this.items);
     this.calculateamount();
+    
 
   }
 

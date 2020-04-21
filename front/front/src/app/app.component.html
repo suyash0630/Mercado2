@@ -8,20 +8,42 @@
     <i (click)= "call()" class="material-icons" id="home" title="Home">home</i><i>Mercado</i>
   
   </span>
-  <span> &nbsp;&nbsp;&nbsp; <mat-form-field>
-      <input id="searchbar" class="searchIcon" type="text" matInput [(ngModel)]="searchKey" (change)="searchProducts(searchKey)">
-        <mat-icon id="searchbtn" [routerLink]="['/search',searchKey]" class="hover" title="Search">search</mat-icon>
-    </mat-form-field>
+  <span> &nbsp;&nbsp;&nbsp; 
+     
  
   </span>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput
+             placeholder="Search"
+             aria-label="Search"
+             [matAutocomplete]="auto"
+             [formControl]="stateCtrl"  [(ngModel)]="searchKey" >
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let state of filteredStates | async" [value]="state.pName" >
+          <span>{{state.pName}}</span> |
+          <small>Price: {{state.price}}</small>
+        </mat-option>
+      </mat-autocomplete>
+      <mat-icon id="searchbtn" [routerLink]="['/search',searchKey]" class="hover" title="Search">search</mat-icon>
+    </mat-form-field>
+  
+    
+  </form>
+      
+  
+      
+
+    
+  
 
   <span class="example-fill-remaining-space"></span>
   <span *ngIf="userId"> Welcome {{ userId }}</span>
   &nbsp;&nbsp;
-  <span><button mat-button color="accent"  style="color: black;"  *ngIf="userId" id="sellerlogin" (click)="sellerfun()">Seller Login</button></span>
 
   <span>
-    <mat-icon id="cart" *ngIf="userId" [routerLink]="['/cart']" (click)="hideContent()"  title="Shopping Cart">shopping_cart</mat-icon>
+    <mat-icon matBadge={{cart1}} matBadgePosition="above after" id="cart" *ngIf="userId" [routerLink]="['/cart']" (click)="hideContent()"  title="Shopping Cart">shopping_cart</mat-icon>
+    
   </span>
   &nbsp; &nbsp;
   <span>

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UriService } from './uri.service';
-import { GuardService } from './guard.service';
+
 import { RegisterService } from './login/register.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,12 +27,16 @@ import { RegisterComponent } from './register/register.component';
 import { ProductpageComponent } from './productpage/productpage.component';
 import { SearchComponent } from './search/search.component';
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
-import { SellerComponent } from './seller/seller.component';
+
 import { OrderHistoryComponent } from './order-history/order-history.component';
-import { SellerProductsComponent } from './seller-products/seller-products.component';
-import { AddProductComponent } from './add-product/add-product.component';
+
+
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSelectModule} from '@angular/material/select';
+
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 //import { RegisterComponent } from './register/register.component';
 
 
@@ -45,18 +49,18 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ProductpageComponent,
     SearchComponent,
     AddToCartComponent,
-    SellerComponent,
+ 
     OrderHistoryComponent,
-    SellerProductsComponent,
-    AddProductComponent
+    
+    
   ],
   imports: [
     BrowserModule, MatTabsModule, MatSidenavModule, MatToolbarModule , ReactiveFormsModule, NgMatSearchBarModule,
     AppRoutingModule, MatCardModule, MatInputModule, FormsModule, HttpClientModule, MatIconModule,
     BrowserAnimationsModule, MatButtonModule, MatFormFieldModule, MatCarouselModule,MatTableModule,MatProgressSpinnerModule,
-    MatGridListModule
+    MatGridListModule,MatBadgeModule,MatAutocompleteModule,MatSelectModule
 ],
-  providers : [UriService, RegisterService, GuardService],
+  providers : [UriService, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@
     
       <div class="reg-card">
           <mat-grid-list cols="2"  class="grid">
-              <mat-grid-tile> 
+              <mat-grid-tile class="reg-tile"> 
                   <img src="../../assets/img/ecom.jpg">
               </mat-grid-tile>
               <mat-grid-tile class="reg-tile">   
@@ -60,9 +60,11 @@
                               </mat-error>
                           </mat-form-field>
                           <br>
-                          <button mat-raised-button color="primary" class="reg-button" type="submit" [disabled]='registrationForm.invalid' >Registration</button>
+                          
+                          <button mat-raised-button color="primary"  class="reg-button" type="submit" [disabled]='registrationForm.invalid' >Registration</button>
                       </form> 
-                      <span style="color: green;" *ngIf="successMsg">{{successMsg}}</span> 
+                      <span style="color: green;" *ngIf="successMsg!='the email Id is registered: Already exists'">{{successMsg}}</span> 
+                      <span style="color: red;" *ngIf="successMsg=='the email Id is registered: Already exists'">{{successMsg}}</span> 
                       <span style="color: rgb(214, 9, 94);" *ngIf="errorMsg">{{errorMsg}}</span> 
                       
                   </div> 

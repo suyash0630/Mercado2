@@ -20,12 +20,6 @@ export class LoginComponent implements OnInit {
   successMessage: string;
   loginForm: any;
 
-  // createForm() {
-  //   this.loginForm = this.fb.group({
-  //     emailId: ['', [Validators.email, Validators.required]],
-  //     password: ['', [Validators.required]]
-  //     });
-  // }
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required, Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{7,20}$/)]);
 
